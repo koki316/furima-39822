@@ -9,6 +9,9 @@
 | lastname             | string   | null:false               |
 | firstname_kana       | string   | null:false               |
 | lastname_kana        | string   | null:false               |
+| birth_year_id        | integer  | null:false               |
+| birth_month_id       | integer  | null:false               |
+| birth_days_id        | integer  | null:false               |
 
 ### Association
 
@@ -21,12 +24,12 @@
 | -------------------- | ----------- |------------------------------- |
 | items_name           | string      | null:false                     |
 | description          | text        | null:false                     |
-| category             | string      | null:false                     |
-| condition            | string      | null:false                     |
-| pay_for              | string      | null:false                     |
-| ship_from            | string      | null:false                     |
-| ship_days            | string      | null:false                     |
-| price                | string      | null:false                     |
+| category_id          | integer     | null:false                     |
+| condition_id         | integer     | null:false                     |
+| pay_for_id           | integer     | null:false                     |
+| prefecture_id        | integer     | null:false                     |
+| ship_days_id         | integer     | null:false                     |
+| price                | integer     | null:false                     |
 | user                 | references  | null:false, foreign_key: true  |
 
 ### Association
@@ -44,20 +47,21 @@
 ### Association
 
 - belongs_to :user
-- has_one :item
+- belongs_to :item
 - has_one :shipping
 
 ## shippingsテーブル
 
-| Column               | Type     | Option     |
-| -------------------- | -------- |----------- |
-| postcode             | string   | null:false |
-| prefecture           | string   | null:false |
-| city                 | string   | null:false |
-| street               | string   | null:false |
-| building             | string   |            |
-| tellnumber           | string   | null:false |
+| Column               | Type         | Option                        |
+| -------------------- | ------------ |------------------------------ |
+| postcode             | string       | null:false                    |
+| prefecture_id        | string       | null:false                    |
+| city                 | string       | null:false                    |
+| street               | string       | null:false                    |
+| building             | string       |                               |
+| tellnumber           | string       | null:false                    |
+| record               | references   | null:false, foreign_key: true |
 
 ### Association
 
-- has_one :record
+- belongs_to :record
