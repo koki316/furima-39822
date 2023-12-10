@@ -9,9 +9,7 @@
 | lastname             | string   | null:false               |
 | firstname_kana       | string   | null:false               |
 | lastname_kana        | string   | null:false               |
-| birth_year_id        | integer  | null:false               |
-| birth_month_id       | integer  | null:false               |
-| birth_days_id        | integer  | null:false               |
+| birthday             | date     | null:false               |
 
 ### Association
 
@@ -28,7 +26,7 @@
 | condition_id         | integer     | null:false                     |
 | pay_for_id           | integer     | null:false                     |
 | prefecture_id        | integer     | null:false                     |
-| ship_days_id         | integer     | null:false                     |
+| ship_day_id          | integer     | null:false                     |
 | price                | integer     | null:false                     |
 | user                 | references  | null:false, foreign_key: true  |
 
@@ -55,7 +53,7 @@
 | Column               | Type         | Option                        |
 | -------------------- | ------------ |------------------------------ |
 | postcode             | string       | null:false                    |
-| prefecture_id        | string       | null:false                    |
+| prefecture_id        | integer      | null:false                    |
 | city                 | string       | null:false                    |
 | street               | string       | null:false                    |
 | building             | string       |                               |
