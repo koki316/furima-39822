@@ -2,7 +2,7 @@
 
 | Column               | Type     | Option                   |
 | -------------------- | -------- |------------------------- |
-| nickname             | string   | null:false               |
+| nickname             | string   | null:false, length:      |
 | email                | string   | null:false, unique: true |
 | encrypted_password   | string   | null:false               |
 | firstname            | string   | null:false               |
