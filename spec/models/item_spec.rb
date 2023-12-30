@@ -72,6 +72,13 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include "Price must be in 300..9999999"
       end
+
+      it "userが紐付いていないと保存できない" do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
+      end
+
     end
 
     context '商品の出品ができる場合' do
