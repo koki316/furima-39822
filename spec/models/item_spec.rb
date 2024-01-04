@@ -20,31 +20,31 @@ RSpec.describe Item, type: :model do
       end
 
       it "カテゴリーが空では登録できない" do
-        @item.category_id = ""
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
 
       it "商品の状態が空では登録できない" do
-        @item.condition_id = ""
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Condition can't be blank"
       end
 
       it "配送料の負担が空では登録できない" do
-        @item.pay_for_id = ""
+        @item.pay_for_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Pay for can't be blank"
       end
 
       it "発送元の地域が空では登録できない" do
-        @item.prefecture_id = ""
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
 
       it "発送までの日数が空では登録できない" do
-        @item.ship_day_id = ""
+        @item.ship_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Ship day can't be blank"
       end
@@ -55,22 +55,22 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price can't be blank"
       end
 
-      it "販売価格は半角数値でないと登録できない" do
-        @item.price = "お金"
+      it "販売価格は整数でないと登録できない" do
+        @item.price = 2.5
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price is not a number"
+        expect(@item.errors.full_messages).to include "Price must be an integer"
       end
 
       it "販売価格は300円以上でないと登録できない" do
         @item.price = "299"
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price must be in 300..9999999"
+        expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
       end
 
       it "販売価格は9999999円以下でないと登録できない" do
         @item.price = "10000000"
         @item.valid?
-        expect(@item.errors.full_messages).to include "Price must be in 300..9999999"
+        expect(@item.errors.full_messages).to include "Price must be less than or equal to 9999999"
       end
 
       it "userが紐付いていないと保存できない" do
