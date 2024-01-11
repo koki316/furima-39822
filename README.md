@@ -46,9 +46,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping
+- has_one :address
 
-## shippingsテーブル
+## addressesテーブル
 
 | Column               | Type         | Option                        |
 | -------------------- | ------------ |------------------------------ |
@@ -58,7 +58,7 @@
 | street               | string       | null:false                    |
 | building             | string       |                               |
 | tellnumber           | string       | null:false                    |
-| record               | references   | null:false, foreign_key: true |
+| purchase             | references   | null:false, foreign_key: true |
 
 ### Association
 
