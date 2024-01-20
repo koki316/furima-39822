@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def sold_out_move
-    if @item.purchase != nil
+    unless @item.purchase == nil
       redirect_to "/"
     end
   end
