@@ -45,7 +45,7 @@ class PurchaseController < ApplicationController
 
   def sold_out_move
     @item = Item.find(params[:item_id])
-    unless @item.purchase == nil
+    unless @item.purchase == nil && @item.user != current_user
       redirect_to "/"
     end
   end
