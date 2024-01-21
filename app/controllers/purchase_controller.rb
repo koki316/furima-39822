@@ -2,6 +2,7 @@ class PurchaseController < ApplicationController
   before_action :authenticate_user!
   before_action :get_item, only: [:index, :create]
   before_action :get_purchase_address, only: [:index, :new,]
+  before_action :sold_out_move, only: [:index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -40,6 +41,13 @@ class PurchaseController < ApplicationController
         card: purchase_params[:token],
         currency: 'jpy'
       )
+  end
+
+  def sold_out_move
+    @item = Item.find(params[:item_id])
+    unless @item.purchase == nil
+      redirect_to "/"
+    end
   end
 
   def purchase_params
