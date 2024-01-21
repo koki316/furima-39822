@@ -45,7 +45,19 @@ describe '配送先情報' do
       expect(@purchase_address.errors.full_messages).to include "Tellnumber can't be blank"
     end
 
-    it "電話番号は、10桁以上11桁以内の半角数値のみ保存可能なこと" do
+    it "電話番号は9桁以下だと購入できない" do
+      @purchase_address.tellnumber = "123456789"
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include "Tellnumber is invalid"
+    end
+
+    it "電話番号は12桁以上だと購入できない" do
+      @purchase_address.tellnumber = "012345678912"
+      @purchase_address.valid?
+      expect(@purchase_address.errors.full_messages).to include "Tellnumber is invalid"
+    end
+
+    it "電話番号が半角数字以外が含まれている場合は購入できない" do
       @purchase_address.tellnumber = "123456789１０"
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include "Tellnumber is invalid"
