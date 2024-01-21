@@ -12,7 +12,7 @@ const sumProfit = Math.floor(inputValue - taxValue);
 inProfit.innerHTML = sumProfit;
 
 
-})
+});
 
-
-
+window.addEventListener("turbo:load", pay);
+window.addEventListener("render", pay);
