@@ -1,14 +1,11 @@
 class PurchaseController < ApplicationController
   before_action :authenticate_user!
   before_action :get_item, only: [:index, :create]
-  before_action :get_purchase_address, only: [:index, :new,]
+  before_action :get_purchase_address, only: [:index]
   before_action :sold_out_move, only: [:index]
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-  end
-
-  def new
   end
 
   def create
