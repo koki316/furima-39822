@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :get_item, only: [:show, :edit, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update]
+  before_action :sold_out_move, only: [:edit]
   
 
   def index
@@ -56,6 +57,12 @@ class ItemsController < ApplicationController
   def move_to_index
     unless @item.user == current_user
       redirect_to '/'
+    end
+  end
+
+  def sold_out_move
+    unless @item.purchase == nil
+      redirect_to "/"
     end
   end
 
