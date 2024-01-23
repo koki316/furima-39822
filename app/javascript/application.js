@@ -3,19 +3,3 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "card"
 import "item_price"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
